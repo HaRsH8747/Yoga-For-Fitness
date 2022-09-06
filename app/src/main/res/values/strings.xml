@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Yoga For Fitness</string>
+    <string name="exercise">EXERCISE</string>
+    <string name="all">ALL</string>
+    <string name="beginners">BEGINNERS</string>
+    <string name="intermediate">INTERMEDIATE</string>
+    <string name="expert">EXPERT</string>
+    <string name="details">DETAILS.....</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pose">POSE</string>
+    <string name="mountain_pose">MOUNTAIN POSE</string>
+    <string name="Benefits">BENEFITS</string>
+    <string name="go_to_favourite">GO TO FAVOURITE</string>
+    <string name="my_favourites">MY FAVOURITES</string>
+</resources>

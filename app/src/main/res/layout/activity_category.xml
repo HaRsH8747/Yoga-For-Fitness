@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CategoryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_E"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/m_bold"
+            android:text="@string/exercise"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:visibility="invisible"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:hint="Search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivSearch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <HorizontalScrollView-->
+    <!--        android:id="@+id/scrollView"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:scrollbarAlwaysDrawHorizontalTrack="true"-->
+    <!--        android:scrollbars="none"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/clMain">-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/clItem"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:orientation="horizontal">-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnALL"-->
+    <!--                android:layout_width="80dp"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginStart="15dp"-->
+    <!--                android:background="@drawable/button_bg_color"-->
+    <!--                android:enabled="true"-->
+    <!--                android:text="@string/all"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textColorHint="@color/white"-->
+    <!--                android:textSize="16sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnBEGINNERS"-->
+    <!--                android:layout_width="140dp"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginStart="15dp"-->
+    <!--                android:background="@drawable/button_bg_color"-->
+    <!--                android:enabled="true"-->
+    <!--                android:text="@string/beginners"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textColorHint="@color/white"-->
+    <!--                android:textSize="16sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="@+id/btnALL"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/btnALL"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/btnALL" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnINTERMEDIATE"-->
+    <!--                android:layout_width="175dp"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginStart="15dp"-->
+    <!--                android:background="@drawable/button_bg_color"-->
+    <!--                android:enabled="true"-->
+    <!--                android:text="@string/intermediate"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textColorHint="@color/white"-->
+    <!--                android:textSize="16sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="@+id/btnBEGINNERS"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/btnBEGINNERS"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/btnBEGINNERS" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnEXPERT"-->
+    <!--                android:layout_width="140dp"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginStart="15dp"-->
+    <!--                android:background="@drawable/button_bg_color"-->
+    <!--                android:enabled="true"-->
+    <!--                android:text="@string/expert"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textColorHint="@color/white"-->
+    <!--                android:textSize="16sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="@+id/btnINTERMEDIATE"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/btnINTERMEDIATE"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/btnINTERMEDIATE" />-->
+
+    <!--            <androidx.appcompat.widget.AppCompatButton-->
+    <!--                android:id="@+id/btnMY_FAVOURITES"-->
+    <!--                android:layout_width="170dp"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginStart="15dp"-->
+    <!--                android:background="@drawable/button_bg_color"-->
+    <!--                android:enabled="true"-->
+    <!--                android:text="@string/my_favourites"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textColorHint="@color/white"-->
+    <!--                android:textSize="16sp"-->
+    <!--                app:layout_constraintBottom_toBottomOf="@+id/btnEXPERT"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/btnEXPERT"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/btnEXPERT" />-->
+
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    </HorizontalScrollView>-->
+
+    <RelativeLayout
+        android:id="@+id/RLTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clMain">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:elevation="3dp"
+            app:tabGravity="fill"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="0dp"
+            app:tabPaddingStart="0dp"
+            app:tabRippleColor="@null"
+            app:tabTextColor="@color/black">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_tab"
+                android:text="@string/all" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_tab"
+                android:text="@string/beginners" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_tab"
+                android:text="@string/intermediate" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_tab"
+                android:text="@string/expert" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_tab"
+                android:text="@string/my_favourites" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </RelativeLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RLTab" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

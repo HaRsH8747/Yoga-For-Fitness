@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/splash_screen_bg" />
+
+    <item
+        android:width="164dp"
+        android:height="146dp"
+        android:drawable="@drawable/app_logo"
+        android:gravity="center_horizontal"
+        android:top="88dp" />
+
+    <item
+        android:height="100dp"
+        android:drawable="@drawable/yoga_for_fitness"
+        android:gravity="center_horizontal"
+        android:top="248dp" />
+
+    <item
+        android:height="60dp"
+        android:drawable="@drawable/be_slim__fit___healthy_with_us"
+        android:gravity="center_horizontal"
+        android:top="320dp" />
+
+    <item
+        android:width="290dp"
+        android:height="325dp"
+        android:drawable="@drawable/y_i"
+        android:gravity="center_horizontal"
+        android:top="420dp" />
+
+
+</layer-list>
