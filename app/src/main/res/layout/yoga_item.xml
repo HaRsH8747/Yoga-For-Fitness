@@ -6,7 +6,7 @@
     android:layout_margin="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvavitem"
+        android:id="@+id/cvItem"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"

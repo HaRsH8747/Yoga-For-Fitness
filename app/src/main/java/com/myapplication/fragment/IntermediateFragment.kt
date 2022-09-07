@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.myapplication.R
 import com.myapplication.adapter.YogaAdapter
 import com.myapplication.databinding.FragmentIntermediateBinding
 import com.myapplication.models.YogaListX
@@ -31,7 +30,7 @@ class IntermediateFragment : Fragment() {
         intermediateFragment = this
         intermediateList.addAll(Utils.intermediateList)
         binding.rvIntermediate.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = YogaAdapter(intermediateList,requireContext())
+        adapter = YogaAdapter(intermediateList, requireContext())
         binding.rvIntermediate.adapter = adapter
 
         return binding.root

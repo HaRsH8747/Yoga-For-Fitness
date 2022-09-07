@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.myapplication.R
 import com.myapplication.adapter.YogaAdapter
 import com.myapplication.databinding.FragmentAllBinding
 import com.myapplication.models.YogaListX
