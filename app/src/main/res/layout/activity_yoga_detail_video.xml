@@ -165,7 +165,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_fav"
+            app:layout_constraintBottom_toTopOf="@+id/btnFav"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cl5"
             app:layout_constraintTop_toBottomOf="@+id/cl5" />
@@ -340,12 +340,13 @@
         <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         <Button
-            android:id="@+id/btn_fav"
-            android:layout_width="190dp"
-            android:layout_height="48dp"
+            android:id="@+id/btnFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:paddingHorizontal="20dp"
             android:background="@drawable/button_bg_color"
-            android:text="@string/go_to_favourite"
+            android:text="@string/add_to_favourite"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

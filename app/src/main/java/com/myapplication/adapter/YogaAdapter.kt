@@ -62,6 +62,7 @@ class YogaAdapter(
                 override fun onResponse(call: Call<YogaDetailGallery>, response: Response<YogaDetailGallery>) {
                     if(response.body() != null){
                         Utils.yogaDetailGallery = response.body()!!
+                        Utils.currentYogaId = yogaList[position].id
                         val intent = Intent(context, YogaDetailGalleryActivity::class.java)
                         context.startActivity(intent)
                     }
@@ -83,6 +84,7 @@ class YogaAdapter(
                 override fun onResponse(call: Call<YogaDetailVideo>, response: Response<YogaDetailVideo>) {
                     if(response.body() != null){
                         Utils.yogaDetailVideo = response.body()!!
+                        Utils.currentYogaId = yogaList[position].id
                         val intent = Intent(context, YogaDetailVideoActivity::class.java)
                         context.startActivity(intent)
                     }

@@ -29,6 +29,7 @@
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/be_slim__fit___healthy_with_us.xml" value="0.1565" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/button_bg_color.xml" value="0.121" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/custom_splash_screen.xml" value="0.1565" />
+        <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/ic_music.xml" value="0.1445" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/selected_tab.xml" value="0.1565" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/tab_selector.xml" value="0.1565" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/drawable/tab_text_color_selector.xml" value="0.1565" />
@@ -43,6 +44,7 @@
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_beginners.xml" value="0.25" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_expert.xml" value="0.25" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_intermediate.xml" value="0.25" />
+        <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_my_favourites.xml" value="0.25" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_pose_detail_sider.xml" value="0.264" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_pose_detail_video.xml" value="0.264" />
         <entry key="..\:/Users/harshmoradiya/AndroidStudioProjects/YogaForFitness/app/src/main/res/layout/fragment_yoga_detail_gallery.xml" value="0.25" />

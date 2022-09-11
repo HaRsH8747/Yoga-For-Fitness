@@ -12,7 +12,6 @@ import com.myapplication.databinding.FragmentIntermediateBinding
 import com.myapplication.models.YogaListX
 import com.myapplication.utils.Utils
 
-
 class IntermediateFragment : Fragment() {
 
     private lateinit var binding: FragmentIntermediateBinding

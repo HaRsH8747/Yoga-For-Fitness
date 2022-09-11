@@ -16,9 +16,11 @@ class Utils {
         lateinit var yogaResponse: YogaList
         var beginnersList = mutableListOf<YogaListX>()
         var intermediateList = mutableListOf<YogaListX>()
+        var favouritesList = mutableListOf<YogaListX>()
         var allYogaList = mutableListOf<YogaListX>()
         var yogaSearchList = mutableListOf<YogaListX>()
         lateinit var yogaDetailGallery: YogaDetailGallery
         lateinit var yogaDetailVideo: YogaDetailVideo
+        var currentYogaId = 0
     }
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.myapplication.utils.Utils
 
 class ViewPagerAdapter(
     fragmentManager: FragmentManager,
@@ -15,14 +16,12 @@ class ViewPagerAdapter(
     private val mFragmentTitleList: List<String> = ArrayList()
 
     override fun getItemCount(): Int {
-        Log.d("CLEAR","Inside size")
-        return 5
+        return Utils.categoryResponse.type.size
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                Log.d("CLEAR","Inside All")
                 AllFragment()
             }
             1 -> {

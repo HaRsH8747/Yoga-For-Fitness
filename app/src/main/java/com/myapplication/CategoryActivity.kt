@@ -47,7 +47,7 @@ class CategoryActivity : AppCompatActivity() {
 //        StartActivity.startActivity.finish()
 //        binding = ActivityCategoryBinding.inflate(layoutInflater)
         binding.viewpager2.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-        binding.viewpager2.offscreenPageLimit = 5
+        binding.viewpager2.offscreenPageLimit = categoryResponse.type.size
         binding.viewpager2.isUserInputEnabled = false
 
 //        fetchCategoryData()
@@ -107,16 +107,16 @@ class CategoryActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewpager2) { tab, position ->}.attach()
     }
 
-    fun hideSoftKeyboard(activity: Activity) {
-        val inputMethodManager = activity.getSystemService(
-            INPUT_METHOD_SERVICE) as InputMethodManager
-        if (inputMethodManager.isAcceptingText) {
-            inputMethodManager.hideSoftInputFromWindow(
-                activity.currentFocus!!.windowToken,
-                0
-            )
-        }
-    }
+//    fun hideSoftKeyboard(activity: Activity) {
+//        val inputMethodManager = activity.getSystemService(
+//            INPUT_METHOD_SERVICE) as InputMethodManager
+//        if (inputMethodManager.isAcceptingText) {
+//            inputMethodManager.hideSoftInputFromWindow(
+//                activity.currentFocus!!.windowToken,
+//                0
+//            )
+//        }
+//    }
 
     private fun getSearchList(searchText: String): List<YogaListX> {
         return if (searchText.isNotEmpty()){
@@ -136,25 +136,25 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchCategoryData() {
-        val yogaApi = RetrofitInstance.api
-        GlobalScope.launch {
-            result = yogaApi.getCategories(token)
-            result.enqueue(object : Callback<Category> {
-                override fun onResponse(call: Call<Category>, response: Response<Category>) {
-                    if(response.body() != null){
-                        categoryResponse = response.body()!!
-//                        startActivity(intent)
-//                        overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
-//                        finish()
-                        Log.d("CLEAR","response: ${categoryResponse}")
-                    }
-                }
-                override fun onFailure(call: Call<Category>, t: Throwable) {
-                    Log.d("CLEAR","MainActivity: ${t.message}")
-                    Toast.makeText(this@CategoryActivity,"Unable to fetch data!", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }
-    }
+//    private fun fetchCategoryData() {
+//        val yogaApi = RetrofitInstance.api
+//        GlobalScope.launch {
+//            result = yogaApi.getCategories(token)
+//            result.enqueue(object : Callback<Category> {
+//                override fun onResponse(call: Call<Category>, response: Response<Category>) {
+//                    if(response.body() != null){
+//                        categoryResponse = response.body()!!
+////                        startActivity(intent)
+////                        overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
+////                        finish()
+//                        Log.d("CLEAR","response: ${categoryResponse}")
+//                    }
+//                }
+//                override fun onFailure(call: Call<Category>, t: Throwable) {
+//                    Log.d("CLEAR","MainActivity: ${t.message}")
+//                    Toast.makeText(this@CategoryActivity,"Unable to fetch data!", Toast.LENGTH_SHORT).show()
+//                }
+//            })
+//        }
+//    }
 }
