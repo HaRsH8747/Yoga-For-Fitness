@@ -1,5 +1,6 @@
 package com.myapplication.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.myapplication.adapter.YogaAdapter
 import com.myapplication.databinding.FragmentMyFavouritesBinding
+import com.myapplication.models.YogaListX
 import com.myapplication.utils.AppPref
 import com.myapplication.utils.Utils
 import java.util.regex.Pattern
@@ -18,6 +20,10 @@ class MyFavouritesFragment : Fragment() {
     private lateinit var binding: FragmentMyFavouritesBinding
     private lateinit var appPref: AppPref
     private lateinit var adapter: YogaAdapter
+    private var favList = mutableListOf<YogaListX>()
+    companion object{
+        lateinit var myFavouritesFragment: MyFavouritesFragment
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +31,7 @@ class MyFavouritesFragment : Fragment() {
     ): View {
         binding = FragmentMyFavouritesBinding.inflate(layoutInflater, container, false)
         appPref = AppPref(requireContext())
+        myFavouritesFragment = this
 
         return binding.root
     }
@@ -36,7 +43,9 @@ class MyFavouritesFragment : Fragment() {
             binding.tvFavourite.visibility = View.INVISIBLE
             getFavourites()
             binding.rvFavourite.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            adapter = YogaAdapter(Utils.favouritesList, requireContext())
+            favList.clear()
+            favList.addAll(Utils.favouritesList)
+            adapter = YogaAdapter(favList, requireContext())
             binding.rvFavourite.adapter = adapter
         }else{
             binding.rvFavourite.visibility = View.INVISIBLE
@@ -58,6 +67,7 @@ class MyFavouritesFragment : Fragment() {
             }
         }
 
+
 //        for (item in Utils.intermediateList){
 //            for (fav in favourites){
 //                if (item.id == fav.toInt()){
@@ -65,6 +75,16 @@ class MyFavouritesFragment : Fragment() {
 //                }
 //            }
 //        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateSearchList(){
+//        binding.rvAll.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+//        val adapter = YogaAdapter(Utils.yogaSearchList,requireContext())
+//        binding.rvAll.adapter = adapter
+        favList.clear()
+        favList.addAll(Utils.yogaSearchList)
+        adapter.notifyDataSetChanged()
     }
 
 //    private fun fetchYogaDetail(yogaId: String) {

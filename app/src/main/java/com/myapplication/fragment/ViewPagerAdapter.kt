@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.myapplication.utils.Utils
 
 class ViewPagerAdapter(
@@ -65,7 +63,7 @@ class ViewPagerAdapter(
         }
         else if (position != 0 && position != (Utils.categoryResponse.type.size + 2)){
             Log.d("CLEAR","pos: $position")
-            BeginnersFragment(Utils.categoryResponse.type[position-1].id)
+            CommonFragment(Utils.categoryResponse.type[position-1].id)
         } else{
             AllFragment()
         }

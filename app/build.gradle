@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.myapplication"
-        minSdk 21
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -70,4 +70,11 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
+    //Lotti Animation
+    implementation 'com.airbnb.android:lottie:3.7.0'
+
+    //Play Core
+    implementation 'com.google.android.play:core:1.10.3'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
 }

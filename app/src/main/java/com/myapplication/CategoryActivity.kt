@@ -1,50 +1,47 @@
 package com.myapplication
 
-import android.app.Activity
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.myapplication.api.RetrofitInstance
 import com.myapplication.databinding.ActivityCategoryBinding
 import com.myapplication.fragment.AllFragment
-import com.myapplication.fragment.BeginnersFragment
-import com.myapplication.fragment.IntermediateFragment
+import com.myapplication.fragment.CommonFragment
+import com.myapplication.fragment.MyFavouritesFragment
 import com.myapplication.fragment.ViewPagerAdapter
 import com.myapplication.models.Category
 import com.myapplication.models.YogaListX
+import com.myapplication.utils.ConnectionLiveData
 import com.myapplication.utils.Utils
 import com.myapplication.utils.Utils.Companion.categoryResponse
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoryBinding
     var isFirstTime: Boolean = false
     private lateinit var snackbar: Snackbar
-    var tabTitle = arrayOf("ALL","BEGINNERS","INTERMEDIATE","EXPERT","MY FAVOURITES")
+//    var tabTitle = arrayOf("ALL","BEGINNERS","INTERMEDIATE","EXPERT","MY FAVOURITES")
     val token: String = "xaZPmP8Fu9hdbhHasB"
     private lateinit var result: Call<Category>
     var toggleSearch = false
+    private lateinit var connectionLiveData: ConnectionLiveData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_YogaForFitness)
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        addNetworkListener(this)
 //        StartActivity.startActivity.finish()
 //        binding = ActivityCategoryBinding.inflate(layoutInflater)
 //        val tv = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
@@ -116,11 +113,21 @@ class CategoryActivity : AppCompatActivity() {
                 binding.etSearch.removeTextChangedListener(this)
                 Utils.yogaSearchList.clear()
                 Utils.yogaSearchList.addAll(getSearchList(binding.etSearch.text.toString()))
-//                when(binding.viewpager2.currentItem){
-//                    0 -> AllFragment.allFragment.updateSearchList()
-//                    1 -> BeginnersFragment.beginnersFragment.updateSearchList()
-//                    2 -> IntermediateFragment.intermediateFragment.updateSearchList()
+
+//                if (binding.viewpager.currentItem == 0){
+//                    AllFragment.allFragment.updateSearchList()
 //                }
+                when(binding.viewpager.currentItem){
+                    0 -> {
+                        Log.d("CLEAR","all viewpager: ${Utils.yogaSearchList}")
+                        AllFragment.allFragment.updateSearchList()
+                    }
+                    (binding.tabLayout.tabCount-1) -> MyFavouritesFragment.myFavouritesFragment.updateSearchList()
+                    else -> {
+                        Utils.commonFragList.filter { it.yogaId == categoryResponse.type[binding.viewpager.currentItem-1].id }[0].commonFragment.updateSearchList()
+//                        CommonFragment.commonFragment.updateSearchList()
+                    }
+                }
                 binding.etSearch.addTextChangedListener(this)
             }
         })
@@ -158,8 +165,24 @@ class CategoryActivity : AppCompatActivity() {
 //    }
 
     private fun getSearchList(searchText: String): List<YogaListX> {
-        return if (searchText.isNotEmpty()){
-            Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+        if (searchText.isNotEmpty()){
+//            Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+            when (binding.viewpager.currentItem) {
+                0 -> {
+                    Log.d("CLEAR","all filter: ${Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }}")
+                    return Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+                }
+                (binding.tabLayout.tabCount-1) -> {
+                    return Utils.favouritesList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+                }
+                else -> {
+                    for (list in Utils.allYogaList){
+                        if (list.id == categoryResponse.type[binding.viewpager.currentItem-1].id){
+                            return list.yogalist.filter { it.title.lowercase().contains(searchText.lowercase()) }
+                        }
+                    }
+                }
+            }
 //            when(binding.viewpager2.currentItem){
 //                0 ->
 //                1 -> Utils.beginnersList.filter { it.title.lowercase().contains(searchText.lowercase()) }
@@ -167,13 +190,52 @@ class CategoryActivity : AppCompatActivity() {
 //                else -> Utils.allYogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
 //            }
         }else{
-            Utils.yogaList
+            when (binding.viewpager.currentItem) {
+                0 -> {
+                    Log.d("CLEAR","all filter: ${Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }}")
+                    return Utils.yogaList
+                }
+                (binding.tabLayout.tabCount-1) -> {
+                    Log.d("CLEAR","fav empty")
+                    return Utils.favouritesList
+                }
+                else -> {
+                    for (list in Utils.allYogaList){
+                        if (list.id == categoryResponse.type[binding.viewpager.currentItem-1].id){
+                            return list.yogalist
+                        }
+                    }
+                }
+            }
 //            when(binding.viewpager2.currentItem){
 //                0 ->
 //                1 -> Utils.beginnersList
 //                2 -> Utils.intermediateList
 //                else -> Utils.allYogaList
 //            }
+        }
+        return Utils.yogaList
+    }
+
+    private fun addNetworkListener(context: Context){
+        val networkDialog = Dialog(context)
+        networkDialog.setContentView(R.layout.check_network_dialog)
+        val lottieAnimation = networkDialog.findViewById<LottieAnimationView>(R.id.lvInternet)
+        networkDialog.setCancelable(false)
+        networkDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        lottieAnimation.playAnimation()
+        connectionLiveData = ConnectionLiveData(application)
+        connectionLiveData.observe(this) { isAvailable ->
+            when (isAvailable) {
+                true -> {
+                    if (networkDialog.isShowing) {
+                        networkDialog.dismiss()
+                    }
+                }
+                false -> {
+                    networkDialog.show()
+                }
+            }
         }
     }
 

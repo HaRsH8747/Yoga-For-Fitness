@@ -8,25 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.myapplication.adapter.YogaAdapter
-import com.myapplication.databinding.FragmentBeginnersBinding
+import com.myapplication.databinding.FragmentCommonBinding
+import com.myapplication.models.CommonFragId
 import com.myapplication.models.YogaListX
 import com.myapplication.utils.Utils
 
-class BeginnersFragment(val yogaId: Int) : Fragment() {
+class CommonFragment(val yogaId: Int) : Fragment() {
 
-    private lateinit var binding: FragmentBeginnersBinding
+    private lateinit var binding: FragmentCommonBinding
     private lateinit var adapter: YogaAdapter
     private var yogaList = mutableListOf<YogaListX>()
     companion object{
-        lateinit var beginnersFragment: BeginnersFragment
+        lateinit var commonFragment: CommonFragment
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBeginnersBinding.inflate(layoutInflater, container, false)
-        beginnersFragment = this
+        binding = FragmentCommonBinding.inflate(layoutInflater, container, false)
+        commonFragment = this
+        Utils.commonFragList.add(CommonFragId(yogaId, this))
 //        beginnersList.addAll(Utils.beginnersList)
         for (yoga in Utils.allYogaList){
             if (yoga.id == yogaId){

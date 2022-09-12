@@ -40,7 +40,7 @@ class AllFragment() : Fragment() {
         }
         allYogaList.addAll(Utils.yogaList)
         binding.rvAll.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = AllYogaAdapter(Utils.yogaList,requireContext())
+        adapter = AllYogaAdapter(allYogaList,requireContext())
         binding.rvAll.adapter = adapter
 
         return binding.root

@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/star"
+                android:id="@+id/btnRate"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginEnd="10dp"
@@ -74,7 +74,7 @@
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
-            android:layout_height="214dp"
+            android:layout_height="250dp"
             android:layout_marginVertical="10dp"
             app:layout_constraintBottom_toTopOf="@+id/cl3"
             app:layout_constraintEnd_toEndOf="parent"

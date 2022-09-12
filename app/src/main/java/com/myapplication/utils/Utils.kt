@@ -1,9 +1,6 @@
 package com.myapplication.utils
 
-import com.myapplication.models.Category
-import com.myapplication.models.YogaList
-import com.myapplication.models.YogaListId
-import com.myapplication.models.YogaListX
+import com.myapplication.models.*
 import com.myapplication.models.yogadetailgallery.YogaDetailGallery
 import com.myapplication.models.yogadetailvideo.YogaDetailVideo
 
@@ -23,6 +20,7 @@ class Utils {
         var yogaSearchList = mutableListOf<YogaListX>()
         lateinit var yogaDetailGallery: YogaDetailGallery
         lateinit var yogaDetailVideo: YogaDetailVideo
+        var commonFragList = mutableListOf<CommonFragId>()
         var currentYogaId = 0
     }
 }
