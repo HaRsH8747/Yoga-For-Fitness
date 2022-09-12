@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.myapplication.api.RetrofitInstance
 import com.myapplication.databinding.ActivityCategoryBinding
@@ -46,9 +47,47 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 //        StartActivity.startActivity.finish()
 //        binding = ActivityCategoryBinding.inflate(layoutInflater)
-        binding.viewpager2.adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
-        binding.viewpager2.offscreenPageLimit = categoryResponse.type.size
-        binding.viewpager2.isUserInputEnabled = false
+//        val tv = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("BEGINNERS").setCustomView(tv),1)
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("INTERMEDIATE").setCustomView(tv),2)
+//        binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+
+        val removePos = categoryResponse.type.size + 1
+        for (item in 1 until categoryResponse.type.size+1){
+            binding.tabLayout.getTabAt(item)?.text = categoryResponse.type[item-1].title.uppercase()
+        }
+        for (pos in removePos until binding.tabLayout.tabCount-1){
+            binding.tabLayout.removeTabAt(removePos)
+        }
+
+        binding.viewpager.adapter = ViewPagerAdapter(supportFragmentManager)
+        binding.viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
+//        binding.viewpager.offscreenPageLimit = categoryResponse.type.size
+        binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                binding.viewpager.currentItem = tab!!.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
+
+
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("ALL").setCustomView(tv),0, true)
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("BEGINNERS").setCustomView(tv),1)
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("INTERMEDIATE").setCustomView(tv),2)
+//        var pos = 1
+//        for (type in categoryResponse.type){
+//            binding.tabLayout.addTab(binding.tabLayout.newTab().setText(type.title.uppercase()).setCustomView(tv),pos)
+//            pos++
+//        }
+
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("MY FAVOURITES").setCustomView(tv),categoryResponse.type.size+1)
+
+        binding.viewpager.currentItem = 0
 
 //        fetchCategoryData()
 
@@ -77,11 +116,11 @@ class CategoryActivity : AppCompatActivity() {
                 binding.etSearch.removeTextChangedListener(this)
                 Utils.yogaSearchList.clear()
                 Utils.yogaSearchList.addAll(getSearchList(binding.etSearch.text.toString()))
-                when(binding.viewpager2.currentItem){
-                    0 -> AllFragment.allFragment.updateSearchList()
-                    1 -> BeginnersFragment.beginnersFragment.updateSearchList()
-                    2 -> IntermediateFragment.intermediateFragment.updateSearchList()
-                }
+//                when(binding.viewpager2.currentItem){
+//                    0 -> AllFragment.allFragment.updateSearchList()
+//                    1 -> BeginnersFragment.beginnersFragment.updateSearchList()
+//                    2 -> IntermediateFragment.intermediateFragment.updateSearchList()
+//                }
                 binding.etSearch.addTextChangedListener(this)
             }
         })
@@ -99,12 +138,12 @@ class CategoryActivity : AppCompatActivity() {
 //            false
 //        }
 
-        for (i in 0 until binding.tabLayout.tabCount) {
-            val tv = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
-            binding.tabLayout.getTabAt(i)?.customView = tv
-        }
+//        for (i in 0 until binding.tabLayout.tabCount) {
+//            val tv = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as TextView
+//            binding.tabLayout.getTabAt(i)?.customView = tv
+//        }
 
-        TabLayoutMediator(binding.tabLayout, binding.viewpager2) { tab, position ->}.attach()
+//        TabLayoutMediator(binding.tabLayout, binding.viewpager2) { tab, position ->}.attach()
     }
 
 //    fun hideSoftKeyboard(activity: Activity) {
@@ -120,19 +159,21 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun getSearchList(searchText: String): List<YogaListX> {
         return if (searchText.isNotEmpty()){
-            when(binding.viewpager2.currentItem){
-                0 -> Utils.allYogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
-                1 -> Utils.beginnersList.filter { it.title.lowercase().contains(searchText.lowercase()) }
-                2 -> Utils.intermediateList.filter { it.title.lowercase().contains(searchText.lowercase()) }
-                else -> Utils.allYogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
-            }
+            Utils.yogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+//            when(binding.viewpager2.currentItem){
+//                0 ->
+//                1 -> Utils.beginnersList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+//                2 -> Utils.intermediateList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+//                else -> Utils.allYogaList.filter { it.title.lowercase().contains(searchText.lowercase()) }
+//            }
         }else{
-            when(binding.viewpager2.currentItem){
-                0 -> Utils.allYogaList
-                1 -> Utils.beginnersList
-                2 -> Utils.intermediateList
-                else -> Utils.allYogaList
-            }
+            Utils.yogaList
+//            when(binding.viewpager2.currentItem){
+//                0 ->
+//                1 -> Utils.beginnersList
+//                2 -> Utils.intermediateList
+//                else -> Utils.allYogaList
+//            }
         }
     }
 

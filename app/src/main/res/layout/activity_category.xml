@@ -44,12 +44,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:visibility="invisible"
+            android:hint="Search"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:hint="Search"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivSearch"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,73 +154,117 @@
 
     <!--    </HorizontalScrollView>-->
 
-    <RelativeLayout
-        android:id="@+id/RLTab"
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/RLTab"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:paddingStart="2dp"-->
+    <!--        android:paddingEnd="2dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/clMain">-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="2dp"
-        android:paddingEnd="2dp"
+        android:background="@color/white"
+        android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clMain">
+        app:layout_constraintTop_toBottomOf="@+id/clMain"
+        app:tabGravity="fill"
+        android:paddingBottom="10dp"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="scrollable"
+        app:tabPaddingEnd="0dp"
+        app:tabPaddingStart="0dp"
+        app:tabRippleColor="@null"
+        app:tabTextColor="@color/black">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:elevation="3dp"
-            app:tabGravity="fill"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="scrollable"
-            app:tabPaddingEnd="0dp"
-            app:tabPaddingStart="0dp"
-            app:tabRippleColor="@null"
-            app:tabTextColor="@color/black">
+            android:layout="@layout/custom_tab"
+            android:text="@string/all" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/custom_tab"
-                android:text="@string/all" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/custom_tab"
-                android:text="@string/beginners" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/custom_tab"
-                android:text="@string/intermediate" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/custom_tab"
-                android:text="@string/expert" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout="@layout/custom_tab"
-                android:text="@string/my_favourites" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-        </com.google.android.material.tabs.TabLayout>
-    </RelativeLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="TAB ITEM" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/custom_tab"
+            android:text="@string/my_favourites" />
+
+    </com.google.android.material.tabs.TabLayout>
+    <!--    </RelativeLayout>-->
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RLTab" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

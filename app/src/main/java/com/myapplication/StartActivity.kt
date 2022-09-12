@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import com.myapplication.api.RetrofitInstance
 import com.myapplication.models.Category
 import com.myapplication.models.YogaList
+import com.myapplication.models.YogaListId
 import com.myapplication.utils.Utils
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -73,12 +74,12 @@ class StartActivity : AppCompatActivity() {
                 resultYogaList.enqueue(object : Callback<YogaList> {
                     override fun onResponse(call: Call<YogaList>, response: Response<YogaList>) {
                         if(response.body() != null){
-                            if (type.title == Utils.BEGINNERS){
-                                Utils.beginnersList = response.body()!!.yogalist.toMutableList()
-                            }else if (type.title == Utils.INTERMEDIATE){
-                                Utils.intermediateList = response.body()!!.yogalist.toMutableList()
-                            }
-                            Log.d("CLEAR","response:")
+                            Utils.allYogaList.add(YogaListId(type.id,response.body()!!.yogalist.toMutableList()))
+//                            if (type.title == Utils.BEGINNERS){
+//                            }else if (type.title == Utils.INTERMEDIATE){
+//                                Utils.intermediateList = response.body()!!.yogalist.toMutableList()
+//                            }
+//                            Log.d("CLEAR","response:")
                             if (!isFetched.value!!){
                                 isFetched.postValue(true)
                             }

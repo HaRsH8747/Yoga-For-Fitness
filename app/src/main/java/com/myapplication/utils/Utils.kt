@@ -2,6 +2,7 @@ package com.myapplication.utils
 
 import com.myapplication.models.Category
 import com.myapplication.models.YogaList
+import com.myapplication.models.YogaListId
 import com.myapplication.models.YogaListX
 import com.myapplication.models.yogadetailgallery.YogaDetailGallery
 import com.myapplication.models.yogadetailvideo.YogaDetailVideo
@@ -14,10 +15,11 @@ class Utils {
         const val token = "xaZPmP8Fu9hdbhHasB"
         lateinit var categoryResponse: Category
         lateinit var yogaResponse: YogaList
-        var beginnersList = mutableListOf<YogaListX>()
-        var intermediateList = mutableListOf<YogaListX>()
+        var allYogaList = mutableListOf<YogaListId>()
+        var yogaList = mutableListOf<YogaListX>()
+//        var intermediateList = mutableListOf<YogaListId>()
         var favouritesList = mutableListOf<YogaListX>()
-        var allYogaList = mutableListOf<YogaListX>()
+//        var allYogaList = mutableListOf<YogaListId>()
         var yogaSearchList = mutableListOf<YogaListX>()
         lateinit var yogaDetailGallery: YogaDetailGallery
         lateinit var yogaDetailVideo: YogaDetailVideo

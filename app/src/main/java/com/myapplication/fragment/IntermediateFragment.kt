@@ -27,7 +27,7 @@ class IntermediateFragment : Fragment() {
     ): View {
         binding = FragmentIntermediateBinding.inflate(layoutInflater, container, false)
         intermediateFragment = this
-        intermediateList.addAll(Utils.intermediateList)
+        intermediateList.addAll(Utils.yogaList)
         binding.rvIntermediate.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         adapter = YogaAdapter(intermediateList, requireContext())
         binding.rvIntermediate.adapter = adapter

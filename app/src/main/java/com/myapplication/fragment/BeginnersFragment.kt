@@ -12,11 +12,11 @@ import com.myapplication.databinding.FragmentBeginnersBinding
 import com.myapplication.models.YogaListX
 import com.myapplication.utils.Utils
 
-class BeginnersFragment : Fragment() {
+class BeginnersFragment(val yogaId: Int) : Fragment() {
 
     private lateinit var binding: FragmentBeginnersBinding
     private lateinit var adapter: YogaAdapter
-    private var beginnersList = mutableListOf<YogaListX>()
+    private var yogaList = mutableListOf<YogaListX>()
     companion object{
         lateinit var beginnersFragment: BeginnersFragment
     }
@@ -27,9 +27,14 @@ class BeginnersFragment : Fragment() {
     ): View {
         binding = FragmentBeginnersBinding.inflate(layoutInflater, container, false)
         beginnersFragment = this
-        beginnersList.addAll(Utils.beginnersList)
+//        beginnersList.addAll(Utils.beginnersList)
+        for (yoga in Utils.allYogaList){
+            if (yoga.id == yogaId){
+                yogaList.addAll(yoga.yogalist)
+            }
+        }
         binding.rvBeginner.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = YogaAdapter(beginnersList, requireContext())
+        adapter = YogaAdapter(yogaList, requireContext())
         binding.rvBeginner.adapter = adapter
 
         return binding.root
@@ -40,8 +45,8 @@ class BeginnersFragment : Fragment() {
 //        binding.rvAll.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 //        val adapter = YogaAdapter(Utils.yogaSearchList,requireContext())
 //        binding.rvAll.adapter = adapter
-        beginnersList.clear()
-        beginnersList.addAll(Utils.yogaSearchList)
+        yogaList.clear()
+        yogaList.addAll(Utils.yogaSearchList)
         adapter.notifyDataSetChanged()
     }
 }

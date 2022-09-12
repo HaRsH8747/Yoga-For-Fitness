@@ -24,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class YogaAdapter(
+class AllYogaAdapter(
     private val yogaList: MutableList<YogaListX>,
     val context: Context
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {

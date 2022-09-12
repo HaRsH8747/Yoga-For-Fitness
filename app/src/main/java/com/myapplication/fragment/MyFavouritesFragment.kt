@@ -49,21 +49,22 @@ class MyFavouritesFragment : Fragment() {
         val favouriteString: String = appPref.getString(AppPref.FAVOURITE_YOGA)!!
         val favourites = pattern.split(favouriteString)
         Utils.favouritesList.clear()
-        for (item in Utils.beginnersList){
+        for (item in Utils.yogaList){
             for (fav in favourites){
-                if (item.id == fav.toInt()){
+                if (item.id == fav.toInt() && Utils.favouritesList.none { it.id == item.id }){
+                    Log.d("CLEAR","Fav....")
                     Utils.favouritesList.add(item)
                 }
             }
         }
 
-        for (item in Utils.intermediateList){
-            for (fav in favourites){
-                if (item.id == fav.toInt()){
-                    Utils.favouritesList.add(item)
-                }
-            }
-        }
+//        for (item in Utils.intermediateList){
+//            for (fav in favourites){
+//                if (item.id == fav.toInt()){
+//                    Utils.favouritesList.add(item)
+//                }
+//            }
+//        }
     }
 
 //    private fun fetchYogaDetail(yogaId: String) {
